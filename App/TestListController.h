@@ -14,8 +14,10 @@
 @property(nonatomic, retain) IBOutlet UITableView *tableView;
 @property(nonatomic, retain) IBOutlet UILabel *savedRunCountLabel;
 @property(nonatomic, retain) IBOutlet UIButton *uploadButton;
+@property(nonatomic, retain) IBOutlet UIButton *forgetButton;
 
 - (IBAction) uploadSavedRuns:(id)sender;
+- (IBAction) forgetSavedRuns:(id)sender;
 
 @property (readonly) NSArray* testList;
 

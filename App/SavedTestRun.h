@@ -17,6 +17,7 @@
 + (NSString*) serverVersion;
 + (NSUInteger) savedTestCount;
 + (BOOL) uploadAllTo: (NSURL*)upstreamURL error: (NSError**)outError;
++ (BOOL) forgetAll: (NSError**)outError;
 
 @property (copy) NSDictionary* device;
 @property (copy) NSString* serverVersion;

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		270EA1ED1443C1AD0000AEA9 /* SavedTestRun.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EA1EC1443C1AD0000AEA9 /* SavedTestRun.m */; };
 		27170A4B1444E4020049E6E4 /* CouchbaseStartupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27170A4A1444E4020049E6E4 /* CouchbaseStartupTest.m */; };
+		274EB826144600FA001B7DD0 /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EB825144600FA001B7DD0 /* UIDevice-Hardware.m */; };
 		27A07488143CCDCD0043BEB6 /* BeeCouchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A07487143CCDCD0043BEB6 /* BeeCouchTest.m */; };
 		27A0748C143CDE6B0043BEB6 /* CreateDocsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A0748B143CDE6B0043BEB6 /* CreateDocsTest.m */; };
 		27A37423143E5E85005A577D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A37421143E5E85005A577D /* Icon.png */; };
@@ -41,6 +42,8 @@
 		270EA1EC1443C1AD0000AEA9 /* SavedTestRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedTestRun.m; sourceTree = "<group>"; };
 		27170A491444E4020049E6E4 /* CouchbaseStartupTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouchbaseStartupTest.h; sourceTree = "<group>"; };
 		27170A4A1444E4020049E6E4 /* CouchbaseStartupTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouchbaseStartupTest.m; sourceTree = "<group>"; };
+		274EB824144600FA001B7DD0 /* UIDevice-Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Hardware.h"; sourceTree = "<group>"; };
+		274EB825144600FA001B7DD0 /* UIDevice-Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Hardware.m"; sourceTree = "<group>"; };
 		27A07486143CCDCD0043BEB6 /* BeeCouchTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeeCouchTest.h; sourceTree = "<group>"; };
 		27A07487143CCDCD0043BEB6 /* BeeCouchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeeCouchTest.m; sourceTree = "<group>"; };
 		27A0748A143CDE6B0043BEB6 /* CreateDocsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateDocsTest.h; sourceTree = "<group>"; };
@@ -99,6 +102,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		274EB822144600B2001B7DD0 /* uidevice-extension */ = {
+			isa = PBXGroup;
+			children = (
+				274EB824144600FA001B7DD0 /* UIDevice-Hardware.h */,
+				274EB825144600FA001B7DD0 /* UIDevice-Hardware.m */,
+			);
+			name = "uidevice-extension";
+			path = "vendor/uidevice-extension";
+			sourceTree = SOURCE_ROOT;
+		};
 		27A37420143E5E85005A577D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +178,7 @@
 				270EA1EB1443C1AD0000AEA9 /* SavedTestRun.h */,
 				270EA1EC1443C1AD0000AEA9 /* SavedTestRun.m */,
 				27B28FAC14314FB800B86F18 /* Supporting Files */,
+				274EB822144600B2001B7DD0 /* uidevice-extension */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -274,6 +288,7 @@
 				27A0748C143CDE6B0043BEB6 /* CreateDocsTest.m in Sources */,
 				270EA1ED1443C1AD0000AEA9 /* SavedTestRun.m in Sources */,
 				27170A4B1444E4020049E6E4 /* CouchbaseStartupTest.m in Sources */,
+				274EB826144600FA001B7DD0 /* UIDevice-Hardware.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,7 +357,7 @@
 		27B28FCF14314FB900B86F18 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 102;
+				CURRENT_PROJECT_VERSION = 104;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
@@ -359,7 +374,7 @@
 		27B28FD014314FB900B86F18 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 102;
+				CURRENT_PROJECT_VERSION = 104;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",

@@ -9,6 +9,7 @@
 #import "SavedTestRun.h"
 #import "AppDelegate.h"
 #import "BeeTest.h"
+#import "UIDevice-Hardware.h"
 
 
 @implementation SavedTestRun
@@ -25,19 +26,13 @@ NSUInteger sCount;
 
 + (CouchDatabase*) database {
     if (!sDatabase) {
-        NSURL* serverURL = [self serverURL];
-        NSAssert(serverURL, @"No server URL");
-        CouchServer* server = [[CouchServer alloc] initWithURL: serverURL];
-        sDatabase = [[server databaseNamed: @"workerbee-tests"] retain];
-        [server release];
-
-        RESTOperation* op = [sDatabase create];
-        if (![op wait]) {
-            if(op.httpStatus != 412)
-                NSAssert(NO, @"Error creating db: %@", op.error);   // TODO: Real alert
-        }
+        sDatabase = [[CouchDatabase databaseNamed: @"workerbee-tests"
+                                  onServerWithURL: [self serverURL]] retain];
+        NSError* error;
+        if (![sDatabase ensureCreated: &error])
+            NSAssert(NO, @"Error creating db: %@", error);   // TODO: Real alert
         sCount = [sDatabase getDocumentCount];
-        sVersion = [[server getVersion: NULL] copy];
+        sVersion = [[sDatabase.server getVersion: NULL] copy];
         
     }
     return sDatabase;
@@ -48,14 +43,30 @@ NSUInteger sCount;
 
 - (void) recordTest: (BeeTest*)test {
     UIDevice* deviceInfo = [UIDevice currentDevice];
-    self.device = [NSDictionary dictionaryWithObjectsAndKeys:
+    NSMutableDictionary* deviceDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                    deviceInfo.name, @"name",
-                   deviceInfo.model, @"model",
-                   deviceInfo.systemVersion, @"system",
+                   deviceInfo.platformString, @"hardware",
                    deviceInfo.uniqueIdentifier, @"UDID",
-                   [NSNumber numberWithInt: deviceInfo.batteryState], @"batteryState",
-                   [NSNumber numberWithFloat: deviceInfo.batteryLevel], @"batteryLevel",
+                   [NSArray arrayWithObjects: @"iOS", deviceInfo.systemVersion, nil], @"OS",
+                   [NSNumber numberWithUnsignedInteger: deviceInfo.cpuFrequency], @"CPUSpeed",
+                   [NSNumber numberWithUnsignedInteger: deviceInfo.busFrequency], @"BusSpeed",
+                   [NSNumber numberWithUnsignedInteger: deviceInfo.totalMemory], @"RAM",
+                   [NSNumber numberWithUnsignedInteger: deviceInfo.userMemory], @"userRAM",
+                   deviceInfo.totalDiskSpace, @"diskSize",
+                   deviceInfo.freeDiskSpace, @"diskFree",
                    nil];
+    
+    float batteryLevel = deviceInfo.batteryLevel;
+    if (batteryLevel >= 0)
+        [deviceDict setObject: [NSNumber numberWithFloat: batteryLevel]
+                       forKey: @"batteryLevel"];
+    UIDeviceBatteryState state = deviceInfo.batteryState;
+    if (state > UIDeviceBatteryStateUnknown && state <= UIDeviceBatteryStateFull) {
+        static NSString* kBatteryStates[4] = {nil, @"unplugged", @"charging", @"full"};
+        [deviceDict setObject: kBatteryStates[state] forKey: @"batteryState"];
+    }
+    
+    self.device = deviceDict;
     self.serverVersion = sVersion;
     self.testName = [[test class] testName];
     self.startTime = test.startTime;
@@ -93,15 +104,22 @@ NSUInteger sCount;
                                  beforeDate: [NSDate distantFuture]];
     }
     
-    *outError = repl.error;
+    if (outError) *outError = repl.error;
     NSLog(@"...Replication finished. Error = %@", repl.error);
-    if (*outError)
+    if (repl.error)
         return NO;
-    
-    // After a successful push, delete the database because we don't need to keep the test
+    return [self forgetAll: outError];
+}
+
++ (BOOL) forgetAll: (NSError**)outError {
+    // Delete the entire database because we don't need to keep the test
     // results around anymore. (Just deleting the documents would leave tombstones behind,
     // which would propagate to the server on the next push and delete them there too. Bad.)
-    [[sDatabase DELETE] wait];
+    RESTOperation* op = [[self database] DELETE];
+    if (![op wait]) {
+        if (outError) *outError = op.error;
+        return NO;
+    }
     [sDatabase release];
     sDatabase = nil;
     sCount = 0;

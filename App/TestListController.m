@@ -13,7 +13,8 @@
 #import "SavedTestRun.h"
 
 
-static NSString* const kUpstreamSavedTestDatabaseURL = @"http://snej.iriscouch.com/workerbee-tests";
+static NSString* const kUpstreamSavedTestDatabaseURL =
+                                @"http://ec2-50-16-117-7.compute-1.amazonaws.com:5984/ios-tests/";
 
 
 @interface TestListController ()
@@ -36,8 +37,8 @@ static UIColor* kBGColor;
     }
 }
 
-@synthesize testList = _testList, tableView = _tableView,
-            savedRunCountLabel = _savedRunCountLabel, uploadButton = _uploadButton;
+@synthesize testList = _testList, tableView = _tableView, savedRunCountLabel = _savedRunCountLabel,
+            uploadButton = _uploadButton, forgetButton = _forgetButton;
 
 - (void)dealloc {
     [_testList release];
@@ -127,19 +128,12 @@ static UIColor* kBGColor;
 - (void) updateSavedTestUI {
     NSString* text;
     int nSaved = [SavedTestRun savedTestCount];
-    switch (nSaved) {
-        case 0:
-            text = @"no saved test runs";
-            break;
-        case 1:
-            text = @"one saved test run";
-            break;
-        default:
-            text = [NSString stringWithFormat: @"%u saved test runs", nSaved];
-            break;
-    }
+    if (nSaved == 1)
+        text = @"one saved test run";
+    else
+        text = [NSString stringWithFormat: @"%u saved test runs", nSaved];
     _savedRunCountLabel.text = text;
-    _savedRunCountLabel.hidden = _uploadButton.hidden = (nSaved == 0);
+    _savedRunCountLabel.hidden = _uploadButton.hidden = _forgetButton.hidden = (nSaved == 0);
 }
 
 
@@ -257,6 +251,11 @@ static UIColor* kBGColor;
         [alert show];
         [alert release];
     }
+}
+
+- (IBAction) forgetSavedRuns:(id)sender {
+    [SavedTestRun forgetAll: nil];
+    [self updateSavedTestUI];
 }
 
 @end

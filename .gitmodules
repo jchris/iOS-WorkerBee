@@ -1,0 +1,3 @@
+[submodule "vendor/uidevice-extension"]
+	path = vendor/uidevice-extension
+	url = git://github.com/erica/uidevice-extension.git

@@ -68,8 +68,8 @@ NSString* const AppDelegateCouchRestartedNotification = @"AppDelegateCouchRestar
 
 -(void)couchbaseMobile:(CouchbaseMobile*)couchbase didStart:(NSURL*)serverURL
 {
-    gCouchLogLevel = 1;
-    gRESTLogLevel = kRESTLogRequestURLs;
+    //gCouchLogLevel = 1;
+    //gRESTLogLevel = kRESTLogRequestURLs;
     NSString* notName;
     if (!self.serverURL) {
         self.serverURL = serverURL;
