@@ -10,6 +10,9 @@
 		270EA1ED1443C1AD0000AEA9 /* SavedTestRun.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EA1EC1443C1AD0000AEA9 /* SavedTestRun.m */; };
 		27170A4B1444E4020049E6E4 /* CouchbaseStartupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27170A4A1444E4020049E6E4 /* CouchbaseStartupTest.m */; };
 		274EB826144600FA001B7DD0 /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EB825144600FA001B7DD0 /* UIDevice-Hardware.m */; };
+		274EB853144753DA001B7DD0 /* ContinuousReplicationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EB84C144753DA001B7DD0 /* ContinuousReplicationTest.m */; };
+		274EB854144753DA001B7DD0 /* DocumentOperationsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EB84E144753DA001B7DD0 /* DocumentOperationsTest.m */; };
+		274EB856144753DA001B7DD0 /* SimpleReplicationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EB852144753DA001B7DD0 /* SimpleReplicationTest.m */; };
 		27A07488143CCDCD0043BEB6 /* BeeCouchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A07487143CCDCD0043BEB6 /* BeeCouchTest.m */; };
 		27A0748C143CDE6B0043BEB6 /* CreateDocsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A0748B143CDE6B0043BEB6 /* CreateDocsTest.m */; };
 		27A37423143E5E85005A577D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A37421143E5E85005A577D /* Icon.png */; };
@@ -40,13 +43,15 @@
 /* Begin PBXFileReference section */
 		270EA1EB1443C1AD0000AEA9 /* SavedTestRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedTestRun.h; sourceTree = "<group>"; };
 		270EA1EC1443C1AD0000AEA9 /* SavedTestRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedTestRun.m; sourceTree = "<group>"; };
-		27170A491444E4020049E6E4 /* CouchbaseStartupTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouchbaseStartupTest.h; sourceTree = "<group>"; };
 		27170A4A1444E4020049E6E4 /* CouchbaseStartupTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouchbaseStartupTest.m; sourceTree = "<group>"; };
 		274EB824144600FA001B7DD0 /* UIDevice-Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Hardware.h"; sourceTree = "<group>"; };
 		274EB825144600FA001B7DD0 /* UIDevice-Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Hardware.m"; sourceTree = "<group>"; };
+		274EB84C144753DA001B7DD0 /* ContinuousReplicationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContinuousReplicationTest.m; sourceTree = "<group>"; };
+		274EB84E144753DA001B7DD0 /* DocumentOperationsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentOperationsTest.m; sourceTree = "<group>"; };
+		274EB852144753DA001B7DD0 /* SimpleReplicationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleReplicationTest.m; sourceTree = "<group>"; };
+		274EB85A144755B3001B7DD0 /* CouchbaseStartupTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouchbaseStartupTest.h; sourceTree = "<group>"; };
 		27A07486143CCDCD0043BEB6 /* BeeCouchTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeeCouchTest.h; sourceTree = "<group>"; };
 		27A07487143CCDCD0043BEB6 /* BeeCouchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeeCouchTest.m; sourceTree = "<group>"; };
-		27A0748A143CDE6B0043BEB6 /* CreateDocsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateDocsTest.h; sourceTree = "<group>"; };
 		27A0748B143CDE6B0043BEB6 /* CreateDocsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateDocsTest.m; sourceTree = "<group>"; };
 		27A37421143E5E85005A577D /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		27A37422143E5E85005A577D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
@@ -74,7 +79,6 @@
 		27CB6565143B997900EEA1F2 /* TestListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestListController.xib; sourceTree = "<group>"; };
 		27CB6568143B9B7E00EEA1F2 /* BeeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeeTest.h; sourceTree = "<group>"; };
 		27CB6569143B9B7E00EEA1F2 /* BeeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeeTest.m; sourceTree = "<group>"; };
-		27CB656B143B9EB800EEA1F2 /* CountTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountTest.h; sourceTree = "<group>"; };
 		27CB656C143B9EB800EEA1F2 /* CountTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountTest.m; sourceTree = "<group>"; };
 		27CB6573143BAA2E00EEA1F2 /* BeeTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeeTestController.h; sourceTree = "<group>"; };
 		27CB6574143BAA2E00EEA1F2 /* BeeTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeeTestController.m; sourceTree = "<group>"; };
@@ -198,12 +202,13 @@
 		27CB656E143B9EC500EEA1F2 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				27CB656B143B9EB800EEA1F2 /* CountTest.h */,
-				27CB656C143B9EB800EEA1F2 /* CountTest.m */,
-				27A0748A143CDE6B0043BEB6 /* CreateDocsTest.h */,
-				27A0748B143CDE6B0043BEB6 /* CreateDocsTest.m */,
-				27170A491444E4020049E6E4 /* CouchbaseStartupTest.h */,
+				274EB85A144755B3001B7DD0 /* CouchbaseStartupTest.h */,
 				27170A4A1444E4020049E6E4 /* CouchbaseStartupTest.m */,
+				27CB656C143B9EB800EEA1F2 /* CountTest.m */,
+				27A0748B143CDE6B0043BEB6 /* CreateDocsTest.m */,
+				274EB84C144753DA001B7DD0 /* ContinuousReplicationTest.m */,
+				274EB84E144753DA001B7DD0 /* DocumentOperationsTest.m */,
+				274EB852144753DA001B7DD0 /* SimpleReplicationTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -289,6 +294,9 @@
 				270EA1ED1443C1AD0000AEA9 /* SavedTestRun.m in Sources */,
 				27170A4B1444E4020049E6E4 /* CouchbaseStartupTest.m in Sources */,
 				274EB826144600FA001B7DD0 /* UIDevice-Hardware.m in Sources */,
+				274EB853144753DA001B7DD0 /* ContinuousReplicationTest.m in Sources */,
+				274EB854144753DA001B7DD0 /* DocumentOperationsTest.m in Sources */,
+				274EB856144753DA001B7DD0 /* SimpleReplicationTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

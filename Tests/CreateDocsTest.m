@@ -6,7 +6,12 @@
 //  Copyright (c) 2011 Couchbase, Inc. All rights reserved.
 //
 
-#import "CreateDocsTest.h"
+#import "BeeCouchTest.h"
+
+@interface CreateDocsTest : BeeCouchTest
+
+@end
+
 
 #define kDocumentBatchSize 100
 

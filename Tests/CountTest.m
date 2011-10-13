@@ -6,7 +6,15 @@
 //  Copyright (c) 2011 Couchbase, Inc. All rights reserved.
 //
 
-#import "CountTest.h"
+#import "BeeTest.h"
+
+@interface CountTest : BeeTest
+
+@property int count;
+@property int limit;
+
+@end
+
 
 @implementation CountTest
 
@@ -28,6 +36,10 @@
     self.heartbeatInterval = 1.0;
 }
 
+@end
+
+
+@interface ShortCountTest : CountTest
 @end
 
 

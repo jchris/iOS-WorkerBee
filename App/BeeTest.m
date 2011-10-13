@@ -215,6 +215,7 @@
 }
 
 - (void) setHeartbeatInterval: (NSTimeInterval)interval {
+    BOOL hadHeartbeat = (_heartbeat != nil);
     [_heartbeat invalidate];
     [_heartbeat release];
     if (interval > 0) {
@@ -223,6 +224,8 @@
                                                      selector: @selector(heartbeat)
                                                      userInfo: NULL
                                                       repeats: YES] retain];
+        if (!hadHeartbeat)
+            [self performSelector: @selector(heartbeat) withObject: nil afterDelay: 0.0];
     } else {
         _heartbeat = nil;
     }
@@ -309,6 +312,7 @@
     if (_messages.count > kMaxMessageCount)
         [_messages removeObjectAtIndex: 0];
     [self writeToOutput: message];
+    NSLog(@"LOG %@: %@", [self class], message);
     [_delegate beeTest: self loggedMessage: message];
 }
 
