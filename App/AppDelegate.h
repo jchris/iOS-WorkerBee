@@ -13,8 +13,8 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, CouchbaseDelegate>
 
-@property (strong, nonatomic) IBOutlet UIWindow *window;
-@property (strong, nonatomic) IBOutlet UINavigationController *navController;
+@property (retain, nonatomic) IBOutlet UIWindow *window;
+@property (retain, nonatomic) IBOutlet UINavigationController *navController;
 
 /** The URL of the Couchbase server. */
 @property (readonly, retain, nonatomic) NSURL* serverURL;
